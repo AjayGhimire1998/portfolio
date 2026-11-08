@@ -13,16 +13,45 @@ import { ArrowUpRight } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
 
+const personJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: DATA.name,
+  url: DATA.url,
+  image: `${DATA.url}${DATA.avatarUrl}`,
+  jobTitle: "Technical Systems Analyst",
+  description: DATA.description,
+  email: `mailto:${DATA.contact.email}`,
+  worksFor: { "@type": "Organization", name: "Camco Engineering" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Karratha",
+    addressRegion: "WA",
+    addressCountry: "AU",
+  },
+  alumniOf: DATA.education.map((e) => ({
+    "@type": "EducationalOrganization",
+    name: e.school,
+  })),
+  sameAs: Object.values(DATA.contact.social)
+    .map((s) => s.url)
+    .filter((u) => u.startsWith("http")),
+}).replace(/</g, "\\u003c");
+
 export default function Page() {
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: personJsonLd }}
+      />
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
+                className="font-serif text-4xl tracking-tight sm:text-5xl lg:text-6xl"
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
@@ -44,7 +73,7 @@ export default function Page() {
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight">About</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
@@ -58,17 +87,22 @@ export default function Page() {
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight">Work Experience</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <WorkSection />
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 6.5}>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              {DATA.earlierExperience}
+            </p>
           </BlurFade>
         </div>
       </section>
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight">Education</h2>
           </BlurFade>
           <div className="flex flex-col gap-8">
             {DATA.education.map((education, index) => (
@@ -116,7 +150,7 @@ export default function Page() {
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight">Skills</h2>
           </BlurFade>
           <div className="flex flex-wrap gap-2">
             {DATA.skills.map((skill, id) => (
@@ -130,16 +164,34 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <section id="certifications">
+        <div className="flex min-h-0 flex-col gap-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
+            <h2 className="font-serif text-2xl sm:text-3xl tracking-tight">Certifications</h2>
+          </BlurFade>
+          <div className="flex flex-wrap gap-2">
+            {DATA.certifications.map((cert, id) => (
+              <BlurFade key={cert} delay={BLUR_FADE_DELAY * 10.5 + id * 0.05}>
+                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl min-h-8 w-fit px-4 py-1 flex items-center">
+                  <span className="text-foreground text-sm font-medium">{cert}</span>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <ProjectsSection />
         </BlurFade>
       </section>
-      <section id="hackathons">
-        <BlurFade delay={BLUR_FADE_DELAY * 13}>
-          <HackathonsSection />
-        </BlurFade>
-      </section>
+      {DATA.hackathons.length > 0 && (
+        <section id="hackathons">
+          <BlurFade delay={BLUR_FADE_DELAY * 13}>
+            <HackathonsSection />
+          </BlurFade>
+        </section>
+      )}
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />

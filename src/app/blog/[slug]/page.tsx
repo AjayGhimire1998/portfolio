@@ -101,7 +101,7 @@ export default async function Blog({
     "@type": "BlogPosting",
     headline: post.title,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     description: post.summary,
     image: post.image
       ? `${DATA.url}${post.image}`
@@ -129,7 +129,7 @@ export default async function Blog({
         </Link>
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="title font-semibold text-3xl md:text-4xl tracking-tighter leading-tight">
+        <h1 className="title font-serif text-4xl md:text-5xl tracking-tight leading-tight">
           {post.title}
         </h1>
         <p className="text-sm text-muted-foreground">

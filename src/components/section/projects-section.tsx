@@ -23,11 +23,10 @@ export default function ProjectsSection() {
                         />
                     </div>
                     <div className="flex flex-col gap-y-3 items-center justify-center">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Check out my latest work</h2>
+                        <h2 className="font-serif text-4xl tracking-tight sm:text-5xl">From workshop floor to web</h2>
                         <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-                            I&apos;ve worked on a variety of projects, from simple
-                            websites to complex web applications. Here are a few of my
-                            favorites.
+                            Digital transformation in heavy engineering, products built
+                            with YashiTech, and the apps where I learned to ship.
                         </p>
                     </div>
                 </div>
@@ -47,6 +46,7 @@ export default function ProjectsSection() {
                                 tags={project.technologies}
                                 image={project.image}
                                 video={project.video}
+                                logo={project.logo}
                                 links={project.links}
                             />
                         </BlurFade>

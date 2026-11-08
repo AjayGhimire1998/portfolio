@@ -11,6 +11,20 @@ export const size = {
 };
 export const contentType = "image/png";
 
+// Load the avatar from the bundle so previews work before (and independent of) deployment.
+const getAvatarDataUrl = async () => {
+    try {
+        const buffer = await fetch(new URL("../../public/ajay.jpg", import.meta.url)).then((res) => res.arrayBuffer());
+        let binary = "";
+        const bytes = new Uint8Array(buffer);
+        for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+        return `data:image/jpeg;base64,${btoa(binary)}`;
+    } catch (error) {
+        console.error("Failed to load avatar:", error);
+        return undefined;
+    }
+};
+
 const getFontData = async () => {
     try {
         const [cabinetGrotesk, clashDisplay] = await Promise.all([
@@ -108,9 +122,7 @@ const styles = {
 export default async function Image() {
     try {
         const fontData = await getFontData();
-        const imageUrl = DATA.avatarUrl
-            ? new URL(DATA.avatarUrl, DATA.url).toString()
-            : undefined;
+        const imageUrl = await getAvatarDataUrl();
 
         return new ImageResponse(
             (
