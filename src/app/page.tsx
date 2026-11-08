@@ -56,7 +56,7 @@ export default function Page() {
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
               <BlurFadeText
-                className=" font-serif text-muted-foreground max-w-150 md:text-lg lg:text-xl"
+                className=" font-serif text-muted-foreground max-w-150 md:text-lg lg:text-2xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
