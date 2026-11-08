@@ -159,7 +159,7 @@ My background is software development. I co-founded [YashiTech Solutions](/#work
   education: [
     {
       school: "Academy Xi",
-      href: "https://academyxi.com",
+      href: "https://www.courses.com.au/provider/academy-xi",
       degree: "Full Stack Software Engineering Transform",
       logoUrl: "/academyxi.png",
       start: "2022",
