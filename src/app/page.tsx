@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import CertificationsSection from "@/components/section/certifications-section";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
@@ -187,17 +188,7 @@ export default function Page() {
               Certifications
             </h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
-            {DATA.certifications.map((cert, id) => (
-              <BlurFade key={cert} delay={BLUR_FADE_DELAY * 10.5 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl min-h-8 w-fit px-4 py-1 flex items-center">
-                  <span className="text-foreground text-sm font-medium">
-                    {cert}
-                  </span>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
+          <CertificationsSection />
         </div>
       </section>
       <section id="projects">

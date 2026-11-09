@@ -1,10 +1,29 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import {
+  ChartGantt,
+  ClipboardList,
+  Database,
+  FlaskConical,
+  HomeIcon,
+  NotebookIcon,
+  TrendingUp,
+  Users,
+  Workflow,
+} from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Python } from "@/components/ui/svgs/python";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
 import { Java } from "@/components/ui/svgs/java";
+import {
+  Aws,
+  Capacitor,
+  Firebase,
+  JavaScript,
+  RubyOnRails,
+  SpringBoot,
+  Stripe,
+} from "@/components/ui/svgs/brand-icons";
 
 // Source of truth for this content: reference/profile.md (gitignored).
 // Never name the vendor of the reporting platform used at Camco — refer to it
@@ -21,7 +40,16 @@ type Hackathon = {
 
 type Skill = {
   name: string;
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon?: React.ComponentType<{ className?: string }>;
+};
+
+type Certification = {
+  title: string;
+  issuer?: string;
+  date?: string;
+  image?: string;
+  width?: number;
+  height?: number;
 };
 
 type Project = {
@@ -51,24 +79,24 @@ My background is software development. I co-founded [YashiTech Solutions](/#work
   avatarUrl: "/ajay.jpg",
   skills: [
     { name: "TypeScript", icon: Typescript },
-    { name: "JavaScript" },
+    { name: "JavaScript", icon: JavaScript },
     { name: "React", icon: ReactLight },
-    { name: "SQL" },
+    { name: "SQL", icon: Database },
     { name: "PostgreSQL", icon: Postgresql },
     { name: "Java", icon: Java },
-    { name: "Spring Boot" },
+    { name: "Spring Boot", icon: SpringBoot },
     { name: "Python", icon: Python },
-    { name: "Ruby on Rails" },
-    { name: "Capacitor" },
-    { name: "Firebase" },
-    { name: "AWS" },
-    { name: "Stripe" },
-    { name: "Jest / Vitest / JUnit" },
-    { name: "Systems Analysis" },
-    { name: "Requirements Gathering" },
-    { name: "Process Improvement" },
-    { name: "Change Management" },
-    { name: "Project Management" },
+    { name: "Ruby on Rails", icon: RubyOnRails },
+    { name: "Capacitor", icon: Capacitor },
+    { name: "Firebase", icon: Firebase },
+    { name: "AWS", icon: Aws },
+    { name: "Stripe", icon: Stripe },
+    { name: "Jest / Vitest / JUnit", icon: FlaskConical },
+    { name: "Systems Analysis", icon: Workflow },
+    { name: "Requirements Gathering", icon: ClipboardList },
+    { name: "Process Improvement", icon: TrendingUp },
+    { name: "Change Management", icon: Users },
+    { name: "Project Management", icon: ChartGantt },
   ] as Skill[],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -174,13 +202,60 @@ My background is software development. I co-founded [YashiTech Solutions](/#work
       end: "2021",
     },
   ],
+  // Titles, issuers and dates as printed on each certificate image.
   certifications: [
-    "Ruby Course",
-    "Responsive Web Design",
-    "Efficient Input/Output using Java IO, NIO and NIO2",
-    "Java from Basic to Advanced",
-    "Low Level Design (LLD) from Basics to Advanced",
-  ],
+    {
+      title: "Software Engineering Transform",
+      issuer: "Academy Xi",
+      date: "Sep 2022",
+      image: "/certs/academy-xi-software-engineering.webp",
+      width: 1314,
+      height: 926,
+    },
+    {
+      title: "Efficient Input/Output using Java IO, NIO and NIO2",
+      issuer: "Udemy",
+      date: "Jul 2024",
+      image: "/certs/java-io-nio.webp",
+      width: 1400,
+      height: 1041,
+    },
+    {
+      title: "Java from Basics to Advanced",
+      issuer: "Udemy",
+      date: "Jul 2024",
+      image: "/certs/java-basics-to-advanced.webp",
+      width: 1400,
+      height: 1041,
+    },
+    {
+      title: "React + Redux",
+      issuer: "Sololearn",
+      date: "May 2022",
+      image: "/certs/react-redux.webp",
+      width: 1400,
+      height: 988,
+    },
+    {
+      title: "Ruby",
+      issuer: "Sololearn",
+      date: "May 2022",
+      image: "/certs/ruby.webp",
+      width: 1400,
+      height: 988,
+    },
+    {
+      title: "Responsive Web Design",
+      issuer: "Sololearn",
+      date: "Mar 2022",
+      image: "/certs/responsive-web-design.webp",
+      width: 1400,
+      height: 988,
+    },
+    {
+      title: "Low Level Design (LLD) from Basics to Advanced",
+    },
+  ] as Certification[],
   projects: [
     // {
     //   title: "Paper to Platform",
@@ -205,7 +280,7 @@ My background is software development. I co-founded [YashiTech Solutions](/#work
       dates: "YashiTech Solutions",
       active: true,
       description:
-        "A service app built for Dharan — 24-hour grocery delivery, vehicle blue-book renewal and home salon services — with companion apps for riders and vendors.",
+        "A service app built for Dharan — 24-hour grocery delivery, vehicle blue-book renewal and home salon services — with companion apps for riders and vendors. **3,500+ users**. Completing **150+ Orders every week**",
       technologies: ["TypeScript", "Capacitor", "Firebase", "AWS"],
       links: [
         {
