@@ -95,11 +95,6 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <WorkSection />
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 6.5}>
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              {DATA.earlierExperience}
-            </p>
-          </BlurFade>
         </div>
       </section>
       <section id="education">

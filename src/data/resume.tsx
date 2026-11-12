@@ -182,8 +182,6 @@ My background is software development. I co-founded [YashiTech Solutions](/#work
         "Prepared Japanese dishes alongside 6+ culinary masters at a popular Japanese restaurant (4.3/5 from 1.4k Google reviews, $100k+ weekly sales), serving 180+ guests a day. Managed rosters and introduced a one-week intensive training program for new recruits, and upheld standards that kept a 4-star NSW Food Authority rating for four years.",
     },
   ],
-  // earlierExperience:
-  //   "Also: team leadership and operations roles at Woolworths Group and McDonald's (2017 – 2025).",
   education: [
     {
       school: "Academy Xi",
